@@ -5,6 +5,9 @@ from .base import *
 
 DEBUG = True
 
+# TODO: use environment variables pattern
+SECRET_KEY = 'h3ll0Sh00t1ngSt4r'
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Database
