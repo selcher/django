@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+        <div>
+            <p>published: {{ post.published }}</p>
+            <h2 class="hobbit">
+                <a href="{% url 'post_detail' pk=post.pk %}">
+                    {{ post.title }}
+                </a>
+            </h2>
+            <p>{{ post.text|linebreaks }}</p>
+        </div>
+    {% endfor %}
+{% endblock content %}

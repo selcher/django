@@ -1,0 +1,15 @@
+@font-face {
+    font-family: hobbit;
+    src: url('../fonts/hobbitonbrushhand.ttf')
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: sans-serif, arial;
+}
+
+.hobbit {
+    font-family: hobbit, sans-serif;
+    letter-spacing: 5px;
+}

@@ -18,12 +18,14 @@ BASE_DIR = Path(__file__).ancestor(3)
 MEDIA_ROOT = BASE_DIR.child('media')
 STATIC_ROOT = BASE_DIR.child('static')
 STATICFILES_DIRS = (
-    BASE_DIR.child('assets'),
+    BASE_DIR.child('blog').child('static'),
 )
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR.child('templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
