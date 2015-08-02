@@ -18,6 +18,8 @@ Create project:
 Create app:
 > django-admin.py startapp weblog
 
+Add super user:
+> python manage.py createsuperuser --settings=config.settings.local
 
 Project:
 > blogprog_project ( abandon )
@@ -29,3 +31,13 @@ Project:
 Runserver:
 > cd shootingstar_project
 > python manage.py runserver --settings=config.settings.local
+
+Model Update:
+> python manage.py makemigrations --settings=config.settings.local
+> python manage.py migrate --settings=config.settings.local
+
+PostgreSQL:
+> psql -U <user_name>
+> password: <password>
+> CREATE USER <user_name>
+> CREATE DATABASE shootingstar OWNER <user_name>
