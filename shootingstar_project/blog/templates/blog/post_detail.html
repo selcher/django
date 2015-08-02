@@ -3,13 +3,52 @@
 {% block content %}
 
     <div>
+
         <p>published: {{ post.published }}</p>
-        <a href="{% url 'post_edit' pk=post.pk %}">edit</a>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'post_edit' pk=post.pk %}">edit</a>
+            <a href="{% url 'post_remove' pk=post.pk %}">remove</a>
+        {% endif %}
+
         <h2 class="hobbit">
             <a href="{% url 'post_detail' pk=post.pk %}">
                 {{ post.title }}
             </a>
         </h2>
+
         <p>{{ post.text|linebreaks }}</p>
+
     </div>
+
+    <hr/>
+
+    <a href="{% url 'add_comment_to_post' pk=post.pk %}">
+        Add comment
+    </a>
+
+    {% for comment in post.comments.all %}
+        {% if user.is_authenticated or comment.approved_comment %}
+            <div>
+                <div>
+                    {{ comment.created }}
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'comment_remove' pk=comment.pk %}">remove</a>
+                        {% if not comment.approved_comment %}
+                            <a href="{% url 'comment_approve' pk=comment.pk %}">approve</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <strong>
+                    {{ comment.author }}
+                </strong>
+                <p>
+                    {{ comment.text|linebreaks }}
+                </p>
+            </div>
+        {% endif %}
+    {% empty %}
+        <p>No comments here yet :(</p>
+    {% endfor %}
+
 {% endblock content %}

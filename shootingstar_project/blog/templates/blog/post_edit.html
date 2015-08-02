@@ -6,7 +6,10 @@
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Save</button>
+            <button type="submit" name="save">Save</button>
+            {% if publish %}
+                <button type="submit" name="publish">Publish</button>
+            {% endif %}
         </form>
     </div>
 {% endblock content %}
