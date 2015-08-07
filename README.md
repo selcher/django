@@ -41,3 +41,7 @@ PostgreSQL:
 > password: <password>
 > CREATE USER <user_name>
 > CREATE DATABASE shootingstar OWNER <user_name>
+
+Pull git updates:
+> git pull
+> python manage.py collectstatic --settings=config.settings.local
