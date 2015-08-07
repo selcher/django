@@ -18,6 +18,13 @@ def post_draft_list(request):
     return render(request, 'blog/post_draft_list.html', {'posts': posts})
 
 
+@login_required()
+def post_draft_publish(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.publish()
+    return redirect('blog.views.post_list')
+
+
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})

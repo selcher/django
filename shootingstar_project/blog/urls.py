@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     url(r'^$', views.post_list, name='post_list'),
     url(r'^drafts/$', views.post_draft_list, name='post_draft_list'),
+    url(r'^draft/(?P<pk>[0-9]+)/publish/$', views.post_draft_publish, name='post_draft_publish'),
     url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail, name='post_detail'),
     url(r'^post/(?P<pk>[0-9]+)/edit/$', views.post_edit, name='post_edit'),
     url(r'^post/(?P<pk>[0-9]+)/remove/$', views.post_remove, name='post_remove'),
