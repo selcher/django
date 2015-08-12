@@ -2,17 +2,29 @@
 
 {% block content %}
     {% for post in posts %}
-        <div>
-            <p>published: {{ post.published }}</p>
-            <h2 class="hobbit">
+        <div class="post-item">
+            <h2 class="post-item-title hobbit">
                 <a href="{% url 'post_detail' pk=post.pk %}">
                     {{ post.title }}
                 </a>
             </h2>
-            <p>{{ post.text|linebreaks }}</p>
-            <a href="{% url 'post_detail' pk=post.pk %}">
+            <hr/>
+            <p class="post-item-publish-date">
+                <small>
+                    {{ post.published }}
+                </small>
+            </p>
+            <p class="post-item-content">
+                {{ post.text|linebreaks }}
+            </p>
+            <a class="post-item-comments-link"
+               href="{% url 'post_detail' pk=post.pk %}">
                 Comments: {{ post.approved_comments.count }}
             </a>
+        </div>
+    {% empty %}
+        <div class="post-item">
+            No posts found.
         </div>
     {% endfor %}
 {% endblock content %}

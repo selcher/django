@@ -3,13 +3,177 @@
     src: url('../fonts/hobbitonbrushhand.ttf')
 }
 
+.hobbit {
+    font-family: hobbit, sans-serif;
+    letter-spacing: 5px;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
 body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
     background-color: black;
+}
+
+a {
+    color: #FFFA5C;
+    text-align: center;
+    text-decoration: none;
+}
+
+hr {
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    display: block;
+    border: none;
+    color: #FFFA5C;
+    background-color: #FFFA5C;
+}
+
+form label {
+    vertical-align: top;
+}
+
+form input[type=text],
+form input[type=password],
+form textarea {
+    padding: 5px;
+    border: 0;
+    border-radius: 3px;
+    color: white;
+    background-color: rgba( 255, 255, 255, 0.1 );
+}
+
+form input[type=submit],
+form button {
+    padding: 10px;
+    border: 0;
+    color: #FFFFFF;
+    background-color: #000000;
+}
+
+form input[type=submit]:hover,
+form button:hover {
+    color: #FFFA5C;
+    border-bottom: 1px solid #FFFA5C;
+    cursor: pointer;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     color: white;
     font-family: sans-serif, arial;
 }
 
-.hobbit {
-    font-family: hobbit, sans-serif;
-    letter-spacing: 5px;
+.top-menu {
+    width: 100%;
+    height: 40px;
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #000;
+}
+
+.top-menu-link {
+    padding: 10px;
+    flex: 1 0 auto;
+    text-align: center;
+}
+
+.top-menu-link:hover {
+    border-bottom: 1px solid #7F7D2E;
+}
+
+.content {
+    height: 100%;
+    padding-top: 40px;
+    box-sizing: border-box;
+    flex: auto;
+}
+
+/* Posts */
+
+.content .post-item,
+.content .post-draft-item {
+    margin: 5px 0;
+    padding: 10px;
+    background-color: rgba( 255, 255, 255, 0.1 );
+}
+
+.content .post-detail,
+.content .post-comments {
+    padding: 5px 20px;
+}
+
+.content .post-item-title a:hover {
+    text-shadow: 0 0 5px #FFFA5C;
+}
+
+.content .post-item-publish-date {
+    color: #7F7C08;
+    text-align: right;
+}
+
+.content .post-item-comments-link:hover,
+.content .post-comment-link:hover {
+    text-decoration: underline;
+}
+
+/* Login */
+
+.content .login-form-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content .login-form-container .login-form-message,
+.content .login-form-container .login-form {
+    margin: auto;
+    flex: auto;
+}
+
+/* Edit Post, Comment Post */
+
+.content .edit-post-form-container,
+.content .comment-post-form-container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content .comment-post-form-container .comment-post-form,
+.content .edit-post-form-container .edit-post-form {
+    margin: auto;
+    flex: auto;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-item {
+    flex: 0 0 60px;
+    margin: auto;
 }

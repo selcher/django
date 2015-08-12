@@ -2,9 +2,15 @@
 
 {% block content %}
 
-    <div>
+    <hr/>
 
-        <p>published: {{ post.published }}</p>
+    <div class="post-detail">
+
+        <div class="post-item-publish-date">
+            <small>
+                {{ post.published }}
+            </small>
+        </div>
 
         {% if user.is_authenticated %}
             <a href="{% url 'post_edit' pk=post.pk %}">edit</a>
@@ -26,32 +32,39 @@
 
     <hr/>
 
-    <a href="{% url 'add_comment_to_post' pk=post.pk %}">
-        Add comment
-    </a>
+    <div class="post-comments">
 
-    {% for comment in post.comments.all %}
-        {% if user.is_authenticated or comment.approved_comment %}
-            <div>
+        <br/>
+
+        <a class="post-comment-link"
+           href="{% url 'add_comment_to_post' pk=post.pk %}">
+            Add comment
+        </a>
+
+        {% for comment in post.comments.all %}
+            {% if user.is_authenticated or comment.approved_comment %}
                 <div>
-                    {{ comment.created }}
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'comment_remove' pk=comment.pk %}">remove</a>
-                        {% if not comment.approved_comment %}
-                            <a href="{% url 'comment_approve' pk=comment.pk %}">approve</a>
+                    <div>
+                        {{ comment.created }}
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'comment_remove' pk=comment.pk %}">remove</a>
+                            {% if not comment.approved_comment %}
+                                <a href="{% url 'comment_approve' pk=comment.pk %}">approve</a>
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
+                    </div>
+                    <strong>
+                        {{ comment.author }}
+                    </strong>
+                    <p>
+                        {{ comment.text|linebreaks }}
+                    </p>
                 </div>
-                <strong>
-                    {{ comment.author }}
-                </strong>
-                <p>
-                    {{ comment.text|linebreaks }}
-                </p>
-            </div>
-        {% endif %}
-    {% empty %}
-        <p>No comments here yet :(</p>
-    {% endfor %}
+            {% endif %}
+        {% empty %}
+            <p>No comments here yet :(</p>
+        {% endfor %}
+
+    </div>
 
 {% endblock content %}
